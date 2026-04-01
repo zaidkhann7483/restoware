@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
 
-const API = 'http://localhost:5000/api';
+const API = import.meta.env.VITE_API_URL;
 
 const CheckoutPage = () => {
     const { tableId } = useParams();
