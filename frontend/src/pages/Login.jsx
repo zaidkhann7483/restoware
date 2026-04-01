@@ -6,7 +6,8 @@ const Login = () => {
     const [email, setEmail] = useState('admin@restaurant.com');
     const [password, setPassword] = useState('admin123');
     const navigate = useNavigate();
-
+    
+const BASE_URL = import.meta.env.VITE_API_URL;
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
