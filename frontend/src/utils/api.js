@@ -1,6 +1,6 @@
     import axios from 'axios';
 
-const BASE_URL = 'http://localhost:5000/api';
+const BASE_URL = 'https://restoware.onrender.com/api';
 
 // Create a shared axios instance for admin (auth-required) calls
 const api = axios.create({
