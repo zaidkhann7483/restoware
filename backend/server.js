@@ -8,7 +8,10 @@ const Admin = require('./models/Admin');
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: "https://restoware.vercel.app",
+  credentials: true
+}));
 
 // DB Connection
 mongoose.connect(process.env.MONGO_URI)
