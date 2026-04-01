@@ -8,7 +8,7 @@ const TableSelection = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get('http://localhost:5000/api/tables')
+        axios.get(`${import.meta.env.VITE_API_URL}/tables`)
             .then(res => { setTables(res.data); setLoading(false); })
             .catch(err => { console.error(err); setLoading(false); });
     }, []);
