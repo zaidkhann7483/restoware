@@ -273,7 +273,8 @@ const OrderPage = () => {
                                             <i className="fas fa-check text-[8px]"></i> {inCart.quantity}
                                         </div>
                                     )}
-                                    <div className="relative w-full aspect-square overflow-hidden bg-gray-100">
+                                    {/* Changed aspect-square to h-36 to reduce height */}
+                                    <div className="relative w-full h-36 overflow-hidden bg-gray-100">
                                         {item.image ? (
                                             <img src={item.image} alt={item.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out" />
                                         ) : (
@@ -283,17 +284,18 @@ const OrderPage = () => {
                                         )}
                                         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300"></div>
                                     </div>
-                                    <div className="p-4 flex flex-col flex-1">
-                                        <h3 className="font-bold text-gray-800 text-sm leading-tight mb-1 line-clamp-2 min-h-[2.5rem]">{item.name}</h3>
-                                        <div className="mt-auto pt-3 flex items-center justify-between">
-                                            <span className="font-bold text-gray-900 text-base">₹{fmt(item.price)}</span>
+                                    <div className="p-3 flex flex-col flex-1">
+                                        {/* Changed line-clamp-2 to 1 and removed min-h for compactness */}
+                                        <h3 className="font-bold text-gray-800 text-sm leading-tight mb-1 line-clamp-1">{item.name}</h3>
+                                        <div className="mt-auto pt-2 flex items-center justify-between">
+                                            <span className="font-bold text-gray-900 text-sm">₹{fmt(item.price)}</span>
                                             <button onClick={() => addToCart(item)}
-                                                className={`px-4 py-2 rounded-xl text-xs font-bold transition-all duration-200 shadow-sm flex items-center gap-1.5 ${
+                                                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all duration-200 shadow-sm ${
                                                     inCart 
                                                     ? 'bg-green-50 text-green-700 border border-green-200' 
                                                     : 'bg-gray-900 text-white hover:bg-gray-800 hover:shadow-md'
                                                 }`}>
-                                                {inCart ? <><i className="fas fa-plus text-[10px]"></i> Add More</> : 'Add'}
+                                                Add
                                             </button>
                                         </div>
                                     </div>
