@@ -293,7 +293,7 @@ const OrderPage = () => {
                                                     ? 'bg-green-50 text-green-700' 
                                                     : 'bg-gray-900 text-white hover:bg-gray-800'
                                                 }`}>
-                                                Add
+                                                Add +
                                             </button>
                                         </div>
                                     </div>
