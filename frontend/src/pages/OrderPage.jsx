@@ -114,7 +114,7 @@ const OrderPage = () => {
     })();
 
     const OrderCard = ({ order, type }) => (
-        <div className={`border p-4 mb-3 rounded-xl shadow-sm ${type === 'phone' ? 'border-indigo-200 bg-indigo-50/50' : 'border-gray-200 bg-white'}`}>
+        <div className={`p-4 mb-3 rounded-xl shadow-sm ${type === 'phone' ? 'bg-indigo-50/50' : 'bg-white'}`}>
             <div className="flex items-start justify-between gap-4">
                 <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-1">
@@ -133,7 +133,7 @@ const OrderPage = () => {
                 <div className="flex flex-col gap-2 flex-shrink-0">
                     <button 
                         onClick={() => handleAddMoreItems(order)}
-                        className="px-4 py-2 bg-white border border-gray-300 text-gray-700 text-xs font-medium rounded-lg hover:bg-gray-50 hover:border-gray-400 transition shadow-sm cursor-pointer"
+                        className="px-4 py-2 bg-white text-gray-700 text-xs font-medium rounded-lg hover:bg-gray-50 transition shadow-sm cursor-pointer"
                     >
                         + Add Items
                     </button>
@@ -163,7 +163,7 @@ const OrderPage = () => {
                                 </label>
                                 <div className="flex gap-3">
                                     <input
-                                        className="flex-1 px-4 py-3 border border-gray-200 rounded-xl focus:border-gray-900 focus:ring-2 focus:ring-gray-900/20 outline-none text-sm transition bg-gray-50 focus:bg-white"
+                                        className="flex-1 px-4 py-3 bg-gray-50 rounded-xl focus:bg-white focus:ring-2 focus:ring-gray-900/20 outline-none text-sm transition cursor-text"
                                         placeholder="Enter phone number"
                                         type="tel"
                                         value={phoneInput}
@@ -189,7 +189,7 @@ const OrderPage = () => {
                                             {phoneOrders.map(order => <OrderCard key={order._id} order={order} type="phone" />)}
                                         </div>
                                     ) : (
-                                        <div className="text-center py-8 border border-dashed border-gray-200 rounded-xl mb-6 bg-gray-50">
+                                        <div className="text-center py-8 rounded-xl mb-6 bg-gray-50">
                                             <p className="text-sm text-gray-500">No active orders found for this number</p>
                                         </div>
                                     )}
@@ -198,7 +198,7 @@ const OrderPage = () => {
 
                             {/* Divider */}
                             {activeOrders.length > 0 && phoneLookupDone && (
-                                <div className="border-t border-gray-100 my-6"></div>
+                                <div className="my-6"></div>
                             )}
 
                             {/* Table Active Orders */}
@@ -211,7 +211,7 @@ const OrderPage = () => {
 
                             {/* Start New Order */}
                             <button onClick={handleNewOrder}
-                                className="w-full py-3.5 bg-white border-2 border-gray-100 text-gray-600 font-bold hover:border-gray-900 hover:text-gray-900 transition rounded-xl text-sm cursor-pointer shadow-sm">
+                                className="w-full py-3.5 bg-white text-gray-600 font-bold hover:bg-gray-50 transition rounded-xl text-sm cursor-pointer shadow-sm">
                                 Start New Order
                             </button>
                         </div>
@@ -225,7 +225,7 @@ const OrderPage = () => {
                 {/* ──── Menu Grid ──── */}
                 <div className="flex-1 overflow-y-auto pr-2 lg:pr-0 scroll-smooth">
                     {/* Sticky Header */}
-                    <div className="sticky top-0 z-10 bg-gray-50/95 backdrop-blur-sm py-4 mb-4 border-b border-gray-200/50">
+                    <div className="sticky top-0 z-10 bg-gray-50/95 backdrop-blur-sm py-4 mb-4">
                         <div className="flex gap-3 items-center">
                             <button onClick={() => navigate('/')} className="text-gray-600 p-2.5 hover:bg-gray-200 rounded-full transition cursor-pointer">
                                 <i className="fas fa-arrow-left"></i>
@@ -233,7 +233,7 @@ const OrderPage = () => {
                             <div className="flex-1 relative">
                                 <i className="fas fa-search absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-sm pointer-events-none"></i>
                                 <input
-                                    className="w-full pl-11 pr-4 py-3 bg-white border border-gray-200 rounded-xl focus:border-gray-900 focus:ring-2 focus:ring-gray-900/10 outline-none text-sm shadow-sm transition cursor-text"
+                                    className="w-full pl-11 pr-4 py-3 bg-white rounded-xl focus:ring-2 focus:ring-gray-900/10 outline-none text-sm shadow-sm transition cursor-text"
                                     placeholder="Search menu..."
                                     value={searchTerm}
                                     onChange={e => setSearchTerm(e.target.value)}
@@ -253,7 +253,7 @@ const OrderPage = () => {
                             </button>
                         </div>
                         {selectedOrder && (
-                            <div className="mt-4 flex items-center justify-between bg-amber-50 border border-amber-200 px-4 py-3 rounded-xl text-xs text-amber-800 font-medium cursor-pointer hover:bg-amber-100 transition" onClick={() => setShowModal(true)}>
+                            <div className="mt-4 flex items-center justify-between bg-amber-50 px-4 py-3 rounded-xl text-xs text-amber-800 font-medium cursor-pointer hover:bg-amber-100 transition" onClick={() => setShowModal(true)}>
                                 <div className="flex items-center gap-2">
                                     <i className="fas fa-edit"></i>
                                     <span>Updating Order #{selectedOrder.orderId}</span>
@@ -267,33 +267,31 @@ const OrderPage = () => {
                         {filteredMenu.map(item => {
                             const inCart = cart.find(c => c._id === item._id);
                             return (
-                                <div key={item._id} className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden group hover:shadow-lg hover:border-gray-200 transition-all duration-300 flex flex-col h-full relative">
+                                <div key={item._id} className="bg-white rounded-2xl shadow-sm overflow-hidden flex flex-col h-full relative">
                                     {inCart && (
                                         <div className="absolute top-3 left-3 z-10 bg-gray-900 text-white text-[11px] font-bold px-2.5 py-1 rounded-full shadow-md flex items-center gap-1">
                                             <i className="fas fa-check text-[8px]"></i> {inCart.quantity}
                                         </div>
                                     )}
-                                    {/* Changed aspect-square to h-36 to reduce height */}
+                                    {/* Removed group-hover and scale effects */}
                                     <div className="relative w-full h-36 overflow-hidden bg-gray-100">
                                         {item.image ? (
-                                            <img src={item.image} alt={item.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out" />
+                                            <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
                                         ) : (
                                             <div className="w-full h-full bg-gray-100 flex items-center justify-center text-gray-300">
                                                 <i className="fas fa-utensils text-3xl opacity-20"></i>
                                             </div>
                                         )}
-                                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-300"></div>
                                     </div>
                                     <div className="p-3 flex flex-col flex-1">
-                                        {/* Changed line-clamp-2 to 1 and removed min-h for compactness */}
                                         <h3 className="font-bold text-gray-800 text-sm leading-tight mb-1 line-clamp-1">{item.name}</h3>
                                         <div className="mt-auto pt-2 flex items-center justify-between">
                                             <span className="font-bold text-gray-900 text-sm">₹{fmt(item.price)}</span>
                                             <button onClick={() => addToCart(item)}
-                                                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all duration-200 shadow-sm ${
+                                                className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all duration-200 shadow-sm cursor-pointer ${
                                                     inCart 
-                                                    ? 'bg-green-50 text-green-700 border border-green-200' 
-                                                    : 'bg-gray-900 text-white hover:bg-gray-800 hover:shadow-md'
+                                                    ? 'bg-green-50 text-green-700' 
+                                                    : 'bg-gray-900 text-white hover:bg-gray-800'
                                                 }`}>
                                                 Add
                                             </button>
@@ -303,7 +301,7 @@ const OrderPage = () => {
                             );
                         })}
                         {filteredMenu.length === 0 && (
-                            <div className="col-span-full flex flex-col items-center justify-center py-20 text-gray-400 bg-white rounded-2xl border border-dashed border-gray-200">
+                            <div className="col-span-full flex flex-col items-center justify-center py-20 text-gray-400 bg-white rounded-2xl">
                                 <i className="fas fa-search text-4xl mb-3 text-gray-200"></i>
                                 <p className="font-medium text-gray-500">No items found</p>
                                 <p className="text-sm mt-1">Try a different search term</p>
@@ -312,7 +310,7 @@ const OrderPage = () => {
                     </div>
 
                     {/* ──── Credits Footer ──── */}
-                    <div className="w-full py-8 flex flex-col items-center justify-center gap-2 border-t border-gray-100 mt-8">
+                    <div className="w-full py-8 flex flex-col items-center justify-center gap-2 mt-8">
                         <p className="text-xs text-gray-400 tracking-wide">
                             Developed by <a 
                                 href="https://mohammedzaidprotfolio.netlify.app" 
@@ -328,11 +326,11 @@ const OrderPage = () => {
 
                 {/* ════════ MOBILE CART ════════ */}
                 <div className={`lg:hidden fixed inset-x-0 bottom-0 z-40 transition-transform duration-300 ease-out ${showCart ? 'translate-y-0' : 'translate-y-full'}`}>
-                    <div className="bg-white border-t border-gray-100 rounded-t-3xl shadow-[0_-5px_20px_rgba(0,0,0,0.1)] max-h-[85vh] flex flex-col">
+                    <div className="bg-white rounded-t-3xl shadow-[0_-5px_20px_rgba(0,0,0,0.1)] max-h-[85vh] flex flex-col">
                         <div className="flex justify-center pt-3 pb-1 cursor-pointer" onClick={() => setShowCart(false)}>
                             <div className="w-10 h-1.5 bg-gray-300 rounded-full"></div>
                         </div>
-                        <div className="flex items-center justify-between px-6 py-4 border-b border-gray-50">
+                        <div className="flex items-center justify-between px-6 py-4">
                             <h2 className="font-bold text-gray-900 text-lg">Your Order</h2>
                             <div className="flex items-center gap-3">
                                 <span className="text-xs font-medium text-gray-500 bg-gray-100 px-2 py-1 rounded-md">{totalItems} Items</span>
@@ -347,8 +345,8 @@ const OrderPage = () => {
                 </div>
 
                 {/* ════════ DESKTOP CART ════════ */}
-                <div className="hidden lg:flex w-96 flex-col bg-white rounded-2xl shadow-sm border border-gray-100 h-[calc(100vh-2rem)] sticky top-4 overflow-hidden flex-shrink-0">
-                    <div className="p-6 border-b border-gray-50 bg-gray-50/50">
+                <div className="hidden lg:flex w-96 flex-col bg-white rounded-2xl shadow-sm h-[calc(100vh-2rem)] sticky top-4 overflow-hidden flex-shrink-0">
+                    <div className="p-6 bg-gray-50/50">
                         <h2 className="font-bold text-gray-900 text-lg">Current Order</h2>
                         <p className="text-xs text-gray-500 mt-1">{totalItems} {totalItems === 1 ? 'item' : 'items'}</p>
                     </div>
@@ -375,11 +373,11 @@ const CartItems = ({ cart, decrease, remove, add, fmt }) => (
             </div>
         ) : (
             cart.map(item => (
-                <div key={item._id} className="flex items-center gap-4 pb-4 border-b border-gray-50 last:border-0 animate-in fade-in slide-in-from-bottom-2 duration-300">
+                <div key={item._id} className="flex items-center gap-4 pb-4 animate-in fade-in slide-in-from-bottom-2 duration-300">
                     {item.image ? (
-                        <img src={item.image} className="w-16 h-16 rounded-xl object-cover flex-shrink-0 border border-gray-100" alt={item.name} />
+                        <img src={item.image} className="w-16 h-16 rounded-xl object-cover flex-shrink-0" alt={item.name} />
                     ) : (
-                        <div className="w-16 h-16 bg-gray-50 rounded-xl flex items-center justify-center flex-shrink-0 border border-gray-100">
+                        <div className="w-16 h-16 bg-gray-50 rounded-xl flex items-center justify-center flex-shrink-0">
                             <i className="fas fa-utensils text-gray-200"></i>
                         </div>
                     )}
@@ -389,7 +387,7 @@ const CartItems = ({ cart, decrease, remove, add, fmt }) => (
                     </div>
                     <div className="flex flex-col items-end gap-2">
                         <span className="font-bold text-gray-900 text-sm">₹{fmt(item.price * item.quantity)}</span>
-                        <div className="flex items-center bg-gray-50 rounded-lg border border-gray-200 p-0.5">
+                        <div className="flex items-center bg-gray-50 rounded-lg p-0.5">
                             <button onClick={() => decrease(item._id)} className="w-7 h-7 flex items-center justify-center text-gray-500 hover:text-gray-900 hover:bg-white rounded-md transition cursor-pointer">−</button>
                             <span className="w-6 text-center text-sm font-semibold text-gray-800">{item.quantity}</span>
                             <button onClick={() => add(item)} className="w-7 h-7 flex items-center justify-center text-gray-500 hover:text-gray-900 hover:bg-white rounded-md transition cursor-pointer">+</button>
@@ -403,13 +401,13 @@ const CartItems = ({ cart, decrease, remove, add, fmt }) => (
 
 /* ───── Cart Footer Component ───── */
 const CartFooter = ({ total, fmt, disabled, onClick, selectedOrder }) => (
-    <div className="p-4 lg:p-6 border-t border-gray-100 bg-white">
+    <div className="p-4 lg:p-6 bg-white">
         <div className="flex justify-between items-end text-xl font-bold text-gray-900 mb-4">
             <span className="text-gray-500 text-sm font-medium mb-1.5">Total Amount</span>
             <span>₹{fmt(total)}</span>
         </div>
         {selectedOrder && (
-            <div className="flex items-center gap-2 bg-amber-50 border border-amber-100 px-3 py-2.5 mb-4 rounded-lg text-xs text-amber-800">
+            <div className="flex items-center gap-2 bg-amber-50 px-3 py-2.5 mb-4 rounded-lg text-xs text-amber-800">
                 <i className="fas fa-info-circle"></i>
                 Updating order #{selectedOrder.orderId}
             </div>
