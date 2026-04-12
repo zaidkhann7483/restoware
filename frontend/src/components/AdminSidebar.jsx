@@ -38,12 +38,12 @@ const AdminSidebar = () => {
                  <div className="w-full py-6 flex flex-col items-center justify-center gap-2 border-t border-gray-100 mt-4">
                         <p className="text-[11px] text-gray-400 tracking-wide">
                             Developed by <a 
-                                href="https://mohammedzaidprotfolio.netlify.app" 
+                                href="" 
                                 target="_blank" 
                                 rel="noopener noreferrer" 
                                 className="text-gray-200 hover:text-gray-100 font-semibold transition-colors"
                             >
-                                Zaid
+                                Xyron
                             </a>
                         </p>
                         {/* <a 
