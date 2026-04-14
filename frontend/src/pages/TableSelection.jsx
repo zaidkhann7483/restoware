@@ -98,12 +98,12 @@ const TableSelection = () => {
             <div className="w-full py-6 flex flex-col items-center justify-center gap-2 border-t border-slate-800/50">
                 <p className="text-[11px] text-slate-500 tracking-wide">
                     Developed by <a 
-                        href="" 
+                        href="https://mohammedzaidprotfolio.netlify.app" 
                         target="_blank" 
                         rel="noopener noreferrer" 
                         className="text-slate-200 hover:text-indigo-400 font-semibold transition-colors"
                     >
-                        Xyron
+                        Zaid
                     </a>
                 </p>
                 {/* <a 

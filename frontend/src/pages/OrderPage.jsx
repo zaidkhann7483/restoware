@@ -313,12 +313,12 @@ const OrderPage = () => {
                     <div className="w-full py-8 flex flex-col items-center justify-center gap-2 mt-8">
                         <p className="text-xs text-gray-400 tracking-wide">
                             Developed by <a 
-                                href="" 
+                                href="https://mohammedzaidprotfolio.netlify.app" 
                                 target="_blank" 
                                 rel="noopener noreferrer" 
                                 className="text-gray-600 hover:text-gray-900 font-semibold transition-colors"
                             >
-                                Xyron
+                                Zaid
                             </a>
                         </p>
                     </div>
